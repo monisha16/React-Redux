@@ -2,8 +2,8 @@ import { SET_LOADER, RESET_LOADER, FETCH_USER } from '../actionTypes';
 import axios from 'axios';
 
 
-export const fetchUsers = (id) => {
-    return (dispatch)=>{
+export const fetchUsers = (id) => (dispatch) => {
+    // return (dispatch)=>{
         let userData = [];
         dispatch({ type: SET_LOADER})
         axios.get(`https://jsonplaceholder.typicode.com/users/${id}`)
@@ -27,5 +27,5 @@ export const fetchUsers = (id) => {
             })
             console.log("error while fetching users", err)
         });
-    }
+    // }
 }

@@ -8,10 +8,10 @@ const BasicCounter = () =>{
     const dispatch = useDispatch();
     const {count} = useSelector(state => state.count)
     const incrementCount=()=>{
-        dispatch(increment_counter())
+            dispatch(increment_counter())
     }
     const decrementCount = () => {
-        dispatch(decrement_counter())
+            dispatch(decrement_counter())
     }
 
 return(
@@ -19,8 +19,12 @@ return(
         <div className={styles['counter']}>
         <h1> USER # {count} </h1>
             <div className={styles['counter__button']}>
-                <button onClick={incrementCount}> + </button>
-                <button onClick={decrementCount}> - </button>
+                {count >= 10 ? <button disabled style={{ cursor: "not-allowed" }} id='inc' onClick={incrementCount}> + </button>
+                    : <button id='inc' onClick={incrementCount}> + </button>
+                }
+                {count <= 1 ? <button disabled style={{cursor:"not-allowed"}} id='dec' onClick={decrementCount}> - </button>
+                :<button id='dec' onClick={decrementCount}> - </button>
+                }
             </div>
         </div>
         <UserInfo count={count} />
